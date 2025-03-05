@@ -1,3 +1,3 @@
 # PcPartMarketplace API
 
-An api for a marketplace where people can sell their used computer components or computers and other devices
+An api for a marketplace where people can sell their used computers, computer components or other devices
