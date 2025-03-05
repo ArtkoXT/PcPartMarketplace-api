@@ -21,6 +21,20 @@ public class ListingService {
         return toListingDto(listingRepo.save(createListingFromDTO(listingDto)));
     }
 
+    public ListingDto updateListing(ListingDto listingDto){
+
+        Listing listing = listingRepo.findById(listingDto.getId()).orElseThrow(() -> new NotFoundException("Listing not found"));
+
+        listing.setProduct(productRepo.findById(listingDto.getProductId())
+                .orElseThrow( () -> new NotFoundException("Product not found!")));
+        listing.setSeller(userRepo.findById(listingDto.getSellerId())
+                .orElseThrow( () -> new NotFoundException("User not found!")));
+        listing.setStatus(listingDto.getStatus());
+        listing.setUpdatedAt(listingDto.getUpdatedAt());
+
+        return toListingDto(listingRepo.save(listing));
+    }
+
     private Listing createListingFromDTO(ListingDto listingDto){
 
         Listing listing = new Listing();
