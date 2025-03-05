@@ -19,12 +19,12 @@ public class ListingController {
         return listingService.getAllListings();
     }
 
-    @PutMapping("/add")
+    @PostMapping("/add")
     public ListingDto addListing(@RequestBody ListingDto listingDto){
         return listingService.createListing(listingDto);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ListingDto updateListing(@PathVariable Long id, @RequestBody ListingDto listingDto){
         return listingService.updateListing(id, listingDto);
     }
