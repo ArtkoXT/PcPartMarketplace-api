@@ -18,12 +18,14 @@ public class ListingService {
     UserRepository userRepo;
 
     public ListingDto createListing(ListingDto listingDto){
-        return toListingDto(listingRepo.save(createListingFromDTO(listingDto)));
+        return toListingDto(listingRepo
+                .save(createListingFromDTO(listingDto)));
     }
 
-    public ListingDto updateListing(ListingDto listingDto){
+    public ListingDto updateListing(Long listingId, ListingDto listingDto){
 
-        Listing listing = listingRepo.findById(listingDto.getId()).orElseThrow(() -> new NotFoundException("Listing not found"));
+        Listing listing = listingRepo.findById(listingId)
+                .orElseThrow(() -> new NotFoundException("Listing not found"));
 
         listing.setProduct(productRepo.findById(listingDto.getProductId())
                 .orElseThrow( () -> new NotFoundException("Product not found!")));
@@ -38,6 +40,7 @@ public class ListingService {
     private Listing createListingFromDTO(ListingDto listingDto){
 
         Listing listing = new Listing();
+
         listing.setId(listingDto.getId());
         listing.setProduct(productRepo.findById(listingDto.getProductId())
                 .orElseThrow( () -> new NotFoundException("Product not found!")));
@@ -53,6 +56,7 @@ public class ListingService {
     private ListingDto toListingDto(Listing listing){
 
         ListingDto listingDto = new ListingDto();
+
         listingDto.setId(listing.getId());
         listingDto.setProductId(listing.getProduct().getId());
         listingDto.setSellerId(listing.getSeller().getId());
