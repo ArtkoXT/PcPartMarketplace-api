@@ -9,6 +9,8 @@ import org.oj.pcpartmarketplace.repositories.ProductRepository;
 import org.oj.pcpartmarketplace.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Data
 public class ListingService {
@@ -16,6 +18,13 @@ public class ListingService {
     ListingRepository listingRepo;
     ProductRepository productRepo;
     UserRepository userRepo;
+
+    public List<ListingDto> getAllListings() {
+        return listingRepo.findAll()
+                .stream()
+                .map((this::toListingDto))
+                .toList();
+    }
 
     public ListingDto createListing(ListingDto listingDto){
         return toListingDto(listingRepo
