@@ -5,12 +5,19 @@ import org.oj.pcpartmarketplace.entities.DTOs.ListingDto;
 import org.oj.pcpartmarketplace.services.ListingService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/listings")
 @Data
 public class ListingController {
 
     ListingService listingService;
+
+    @GetMapping("/all")
+    public List<ListingDto> getAllListings(){
+        return listingService.getAllListings();
+    }
 
     @PutMapping("/add")
     public ListingDto addListing(@RequestBody ListingDto listingDto){
