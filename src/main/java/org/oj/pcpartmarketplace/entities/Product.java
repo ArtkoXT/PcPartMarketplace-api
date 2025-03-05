@@ -37,7 +37,13 @@ public class Product {
 
     private String location;
 
-    private List<?> images;
+    @ElementCollection
+    @CollectionTable(
+            name = "product_images",
+            joinColumns = @JoinColumn(name = "productId")
+    )
+    @Column(name = "imageId")
+    private List<Long> images;
 
     private Date creationDate;
 
