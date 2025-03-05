@@ -15,11 +15,11 @@ public class Listing {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sellerId")
+    @JoinColumn(name = "seller_id")
     private User seller;
 
     private String status;
