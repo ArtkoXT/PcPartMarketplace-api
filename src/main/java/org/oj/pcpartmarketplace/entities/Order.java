@@ -15,15 +15,15 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "buyerId")
+    @JoinColumn(name = "buyer_id")
     private User buyer;
 
     @ManyToOne
-    @JoinColumn(name = "sellerId")
+    @JoinColumn(name = "seller_id")
     private User seller;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private double totalPrice;
