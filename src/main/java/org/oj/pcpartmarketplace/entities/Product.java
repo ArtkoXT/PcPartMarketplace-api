@@ -1,7 +1,7 @@
 package org.oj.pcpartmarketplace.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -22,17 +22,17 @@ public class Product {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Column(nullable = false)
-    private String condition;
+    private String itemCondition;
 
     @Column(nullable = false)
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "sellerId")
+    @JoinColumn(name = "seller_id")
     private User seller;
 
     private String location;
@@ -40,15 +40,13 @@ public class Product {
     @ElementCollection
     @CollectionTable(
             name = "product_images",
-            joinColumns = @JoinColumn(name = "productId")
+            joinColumns = @JoinColumn(name = "product_id")
     )
-    @Column(name = "imageId")
+    @Column(name = "image_id")
     private List<Long> images;
 
     private Date creationDate;
 
     private Date lastUpdate;
-
-
 
 }
