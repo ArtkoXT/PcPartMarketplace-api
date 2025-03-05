@@ -13,5 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Data
 public class ListingController {
 
+    ListingService listingService;
 
+    @PutMapping("/add")
+    public ListingDto addListing(@RequestBody ListingDto listingDto){
+        return listingService.createListing(listingDto);
+    }
 }
