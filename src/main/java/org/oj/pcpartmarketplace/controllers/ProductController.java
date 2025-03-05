@@ -1,16 +1,13 @@
 package org.oj.pcpartmarketplace.controllers;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import org.oj.pcpartmarketplace.entities.Product;
 import org.oj.pcpartmarketplace.services.ProductService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/products")
-@Data
+@AllArgsConstructor
 public class ProductController {
 
     ProductService productService;
